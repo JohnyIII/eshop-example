@@ -1,12 +1,18 @@
 package cz.pavelchraska.eshop.service;
 
 import cz.pavelchraska.eshop.dao.ItemDao;
+import cz.pavelchraska.eshop.dao.RoleDao;
+import cz.pavelchraska.eshop.dao.UserDao;
 import cz.pavelchraska.eshop.entity.Item;
+import cz.pavelchraska.eshop.entity.Role;
+import cz.pavelchraska.eshop.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 @Transactional
 @Service
@@ -15,8 +21,33 @@ public class InitDbService {
     @Autowired
     private ItemDao itemDao;
 
+    @Autowired
+    private RoleDao roleDao;
+
+    @Autowired
+    private UserDao userDao;
+
     @PostConstruct
     public void init() {
+        Role roleUser = new Role();
+        roleUser.setName("ROLE_USER");
+        roleDao.save(roleUser);
+
+        Role roleAdmin = new Role();
+        roleAdmin.setName("ROLE_ADMIN");
+        roleDao.save(roleAdmin);
+
+        User userAdmin = new User();
+        userAdmin.setName("Pavel Chraska");
+        List<Role> roles = new ArrayList<Role>();
+        roles.add(roleAdmin);
+        roles.add(roleUser);
+        userAdmin.setRoles(roles);
+        userAdmin.setPassword("admin");
+        userAdmin.setEmail("admin@admin.cz");
+        userAdmin.setUsername("admin");
+        userDao.saveAdmin(userAdmin);
+
         Item item = new Item();
         item.setName("DMC : Devil may cry");
         item.setDescription("DmC: Devil May Cry is an action-adventure hack and slash video game developed by Ninja Theory " +
