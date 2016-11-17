@@ -41,7 +41,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href='<spring:url value="/items.html" />'>Items</a></li>
                     <li><a href='<spring:url value="/basket.html" />'>Basket</a></li>
-                    <li><a href='<spring:url value="/basket.html" />'>Login</a></li>
+                    <li><a href='<spring:url value="/login.html" />'>Login</a></li>
                     <li><a href='<spring:url value="/register.html" />'>Register</a></li>
                 </ul>
 

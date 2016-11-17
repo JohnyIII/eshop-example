@@ -18,5 +18,9 @@
         <put-attribute name="title" value="Items"/>
         <put-attribute name="body" value="/WEB-INF/jsp/register.jsp"/>
     </definition>
+    <definition name="basket" extends="common">
+        <put-attribute name="title" value="Basket"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/basket.jsp"/>
+    </definition>
 
 </tiles-definitions>
