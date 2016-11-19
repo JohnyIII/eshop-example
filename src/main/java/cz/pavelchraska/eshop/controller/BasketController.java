@@ -30,13 +30,8 @@ public class BasketController {
 
     @GetMapping
     public String getBasket(Model model,HttpSession request) {
-        Basket basket= (Basket) model.asMap().get("basket");
-        Collection<OrderedItem> items=basket.getItems();
-        int price=0;
-        for(OrderedItem item : items){
-            price+=(item.getItem().getPrice()*item.getQuantity());
-        }
-        model.addAttribute("total",price);
+
+        model.addAttribute("total",countTotalPrice(model));
         return "basket";
     }
 
@@ -54,5 +49,16 @@ public class BasketController {
     public String remove(@RequestParam int id, @ModelAttribute Basket basket){
         basket.remove(id);
         return "redirect:/basket.html";
+    }
+
+    private Integer countTotalPrice(Model model){
+        Basket basket= (Basket) model.asMap().get("basket");
+        Collection<OrderedItem> items=basket.getItems();
+        Integer price=0;
+        for(OrderedItem item : items){
+            price+=(item.getItem().getPrice()*item.getQuantity());
+        }
+        return price;
+
     }
 }
