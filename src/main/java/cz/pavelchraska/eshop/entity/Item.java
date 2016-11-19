@@ -1,9 +1,7 @@
 package cz.pavelchraska.eshop.entity;
 
 
-import javax.annotation.Generated;
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Item {
@@ -15,7 +13,7 @@ public class Item {
     @Column(length = 1000)
     private String description;
 
-    private double price;
+    private Integer price;
 
     private Integer quantity;
 
@@ -39,11 +37,11 @@ public class Item {
         this.description = description;
     }
 
-    public double getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

@@ -1,8 +1,7 @@
 package cz.pavelchraska.eshop.controller;
 
 
-import cz.pavelchraska.eshop.dao.ItemDao;
-import cz.pavelchraska.eshop.dao.UserDao;
+import cz.pavelchraska.eshop.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,20 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ItemController {
 
     @Autowired
-    ItemDao itemDao;
-
-    @Autowired
-    UserDao userDao;
+    ItemService itemService;
 
     @GetMapping
     public String viewItems(Model model) {
-        model.addAttribute("items", itemDao.findAll());
+        model.addAttribute("items", itemService.findAll());
         return "items";
     }
 
     @RequestMapping("/{id}")
     public String showItem(Model model, @PathVariable int id) {
-        model.addAttribute("item", itemDao.getById(id));
+        model.addAttribute("item", itemService.findById(id));
         return "item";
     }
 }

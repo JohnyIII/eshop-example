@@ -1,3 +1,5 @@
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Pajut
@@ -13,8 +15,8 @@
 <p>
     <b>cena za kus : ${item.price}</b>
 </p>
-
-<form action="baslet/add.html" class="form-horizontal">
+<security:authorize access="isAuthenticated()">
+<form action="<spring:url value="/basket/add.html" /> "class="form-horizontal">
     <div class="form-group">
         <input type="hidden" name="id" value="${item.id}">
         <label class="control-label col-lg-1">Mnozstvi:</label>
@@ -23,5 +25,5 @@
         </div>
         <input type="submit" class="btn btn-md btn-primary" value="Order" />
     </div>
-
+</security:authorize>
 </form>

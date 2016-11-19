@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="eshop_example">
+        <class>cz.pavelchraska.eshop.entity.User</class>
+        <class>cz.pavelchraska.eshop.entity.Item</class>
+        <class>cz.pavelchraska.eshop.entity.Role</class>
+        <class>cz.pavelchraska.eshop.entity.Order</class>
+        <class>cz.pavelchraska.eshop.entity.OrderedItem</class>
+    </persistence-unit>
+</persistence>
