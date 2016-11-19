@@ -4,6 +4,7 @@ package cz.pavelchraska.eshop.controller;
 import cz.pavelchraska.eshop.dao.UserDao;
 import cz.pavelchraska.eshop.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,8 +36,9 @@ public class RegisterController {
     public String doRegister(@Valid @ModelAttribute("user") User user, BindingResult result) {
         if(result.hasErrors()){
             return "register";
-
         }
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        user.setEnabled(true);
         userDao.save(user);
         return "redirect:/register.html?success=true";
     }

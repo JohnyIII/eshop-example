@@ -9,4 +9,6 @@ public interface ItemDao {
     void save(Item item);
 
     List<Item> findAll();
+
+    Object getById(int id);
 }

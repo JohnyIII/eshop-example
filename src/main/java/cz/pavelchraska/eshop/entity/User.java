@@ -32,6 +32,17 @@ public class User {
     @Size(min=3, message = "Username must be at least 3 characters !")
     private String username;
 
+
+    private boolean enabled;
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     public int getId() {
         return id;
     }

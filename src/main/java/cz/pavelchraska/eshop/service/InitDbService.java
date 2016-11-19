@@ -7,6 +7,8 @@ import cz.pavelchraska.eshop.entity.Item;
 import cz.pavelchraska.eshop.entity.Role;
 import cz.pavelchraska.eshop.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,7 +45,8 @@ public class InitDbService {
         roles.add(roleAdmin);
         roles.add(roleUser);
         userAdmin.setRoles(roles);
-        userAdmin.setPassword("admin");
+        userAdmin.setPassword(new BCryptPasswordEncoder().encode("admin"));
+        userAdmin.setEnabled(true);
         userAdmin.setEmail("admin@admin.cz");
         userAdmin.setUsername("admin");
         userDao.saveAdmin(userAdmin);
@@ -68,7 +71,7 @@ public class InitDbService {
                 "a stand-alone prologue released the previous year, as well as his final work prior to his departure from Konami.");
         item2.setImage_url("images/Mgs5.png");
         item2.setPrice(200);
-        item2.setQuantity(5);
+        item2.setQuantity(0);
         itemDao.save(item2);
 
     }

@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="tilesx" uri="http://tiles.apache.org/tags-tiles-extras" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -40,9 +41,18 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href='<spring:url value="/items.html" />'>Items</a></li>
-                    <li><a href='<spring:url value="/basket.html" />'>Basket</a></li>
-                    <li><a href='<spring:url value="/login.html" />'>Login</a></li>
+                    <security:authorize access="!isAuthenticated()">
+                        <li><a href='<spring:url value="/login.html" />'>Login</a></li>
+                    </security:authorize>
+                    <security:authorize access="isAuthenticated()">
+                        <li><a href='<spring:url value="/basket.html" />'>Basket</a></li>
+                        <li><a href='<spring:url value="/account.html" />'>My account</a></li>
+
+                    </security:authorize>
                     <li><a href='<spring:url value="/register.html" />'>Register</a></li>
+                    <security:authorize access="isAuthenticated()">
+                    <li><a href='<spring:url value="/logout" />'>Logout</a></li>
+                    </security:authorize>
                 </ul>
 
             </div><!--/.nav-collapse -->
