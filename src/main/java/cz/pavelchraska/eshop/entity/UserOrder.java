@@ -1,29 +1,35 @@
 package cz.pavelchraska.eshop.entity;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-public class Order {
-
+public class UserOrder {
 
     @Id
     @GeneratedValue
     private int id;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<OrderedItem> orderedItems;
 
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user ;
 
+    @Size(min = 2)
     private String city;
 
+    @Size(min = 5,max = 6)
     private String zipCode;
 
+    @Size(min = 5)
     private String street;
 
+    @Size(min = 4)
     private String state;
 
     public String getCity() {

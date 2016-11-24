@@ -16,7 +16,7 @@ public class User {
     private int id;
 
     @OneToMany
-    private List<Order> orders;
+    private List<UserOrder> userOrders;
 
     @Email
     private String email;
@@ -27,7 +27,7 @@ public class User {
     @Size(min = 5, message = "Password must be at least 5 characters !")
     private String password;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable
     private List<Role> roles;
 
@@ -42,12 +42,12 @@ public class User {
         return enabled;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public List<UserOrder> getUserOrders() {
+        return userOrders;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setUserOrders(List<UserOrder> userOrders) {
+        this.userOrders = userOrders;
     }
 
     public void setEnabled(boolean enabled) {
@@ -100,5 +100,10 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return ((User) obj).getId()==this.getId();
     }
 }

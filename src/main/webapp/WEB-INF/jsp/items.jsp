@@ -9,7 +9,6 @@
         <th>Picture</th>
         <th>Descritpion</th>
         <th>Prize</th>
-        <th>Stock</th>
     </tr>
     </thead>
     <tbody>
@@ -24,16 +23,6 @@
             </td>
             <td width="7%">
                     ${item.price} Kč
-            </td>
-            <td>
-                <c:choose>
-                    <c:when test="${item.quantity>'0'}">
-                        ${item.quantity} left
-                    </c:when>
-                    <c:otherwise>
-                        None left.
-                    </c:otherwise>
-                </c:choose>
             </td>
         </tr>
     </c:forEach>

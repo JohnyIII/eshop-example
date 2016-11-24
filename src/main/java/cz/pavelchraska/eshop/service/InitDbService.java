@@ -4,6 +4,7 @@ import cz.pavelchraska.eshop.dao.ItemDao;
 import cz.pavelchraska.eshop.dao.RoleDao;
 import cz.pavelchraska.eshop.dao.UserDao;
 import cz.pavelchraska.eshop.entity.Item;
+import cz.pavelchraska.eshop.entity.UserOrder;
 import cz.pavelchraska.eshop.entity.Role;
 import cz.pavelchraska.eshop.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,6 @@ public class InitDbService {
                 " set in an alternate reality in the Devil May Cry series.");
         item.setImage_url("resources/DMC.png");
         item.setPrice(155);
-        item.setQuantity(5);
         itemDao.save(item);
 
         Item item2 = new Item();
@@ -70,7 +70,6 @@ public class InitDbService {
                 "a stand-alone prologue released the previous year, as well as his final work prior to his departure from Konami.");
         item2.setImage_url("resources/Mgs5.png");
         item2.setPrice(200);
-        item2.setQuantity(3);
         itemDao.save(item2);
         Item item3 = new Item();
         item3.setName("Metal Gear Solid 4: Guns of the Patriots");
@@ -79,7 +78,6 @@ public class InitDbService {
                 "directed by Hideo Kojima and was released worldwide on June 12, 2008.");
         item3.setImage_url("resources/Mgs4.jpg");
         item3.setPrice(180);
-        item3.setQuantity(7);
         itemDao.save(item3);
         Item item4 = new Item();
         item4.setName("The Witcher 3: Wild Hunt");
@@ -89,7 +87,6 @@ public class InitDbService {
                 "series of fantasy novels by Polish author Andrzej Sapkowski.");
         item4.setImage_url("resources/Witcher3.jpg");
         item4.setPrice(280);
-        item4.setQuantity(7);
         itemDao.save(item4);
 
     }

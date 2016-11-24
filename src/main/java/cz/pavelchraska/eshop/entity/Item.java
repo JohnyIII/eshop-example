@@ -15,8 +15,6 @@ public class Item {
 
     private Integer price;
 
-    private Integer quantity;
-
     private String name;
 
     private String image_url;
@@ -43,14 +41,6 @@ public class Item {
 
     public void setPrice(Integer price) {
         this.price = price;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
     }
 
     public String getName() {

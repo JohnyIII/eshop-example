@@ -2,6 +2,9 @@ package cz.pavelchraska.eshop.controller;
 
 
 import cz.pavelchraska.eshop.dao.UserDao;
+import cz.pavelchraska.eshop.dao.UserOrderDao;
+import cz.pavelchraska.eshop.service.UserOrderService;
+import cz.pavelchraska.eshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,13 +16,17 @@ import java.security.Principal;
 public class UserController {
 
     @Autowired
-    private UserDao userDao;
+    private UserService userService;
 
-@RequestMapping("/account")
-    public String showAccount(Principal principal, Model model){
-    String name=principal.getName();
-    model.addAttribute("user",userDao.findByName(name));
-    return "user-account";
-}
+    @Autowired
+    private UserOrderService userOrderService;
+
+    @RequestMapping("/account")
+    public String showAccount(Principal principal, Model model) {
+        String name = principal.getName();
+        model.addAttribute("user", userService.findByname(name));
+        model.addAttribute("orders", userOrderService.findByUsername(name));
+        return "user-account";
+    }
 
 }

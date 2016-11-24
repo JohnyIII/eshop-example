@@ -35,4 +35,5 @@ public class ItemDaoImpl implements ItemDao {
         Session session = entityManager.unwrap(Session.class);
         return (Item) session.createCriteria(Item.class).add(Restrictions.eq("id", id)).uniqueResult();
     }
+
 }

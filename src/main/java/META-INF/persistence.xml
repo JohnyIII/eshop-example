@@ -4,7 +4,7 @@
         <class>cz.pavelchraska.eshop.entity.User</class>
         <class>cz.pavelchraska.eshop.entity.Item</class>
         <class>cz.pavelchraska.eshop.entity.Role</class>
-        <class>cz.pavelchraska.eshop.entity.Order</class>
+        <class>cz.pavelchraska.eshop.entity.UserOrder</class>
         <class>cz.pavelchraska.eshop.entity.OrderedItem</class>
     </persistence-unit>
 </persistence>

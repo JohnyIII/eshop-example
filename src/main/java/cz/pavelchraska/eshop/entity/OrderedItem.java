@@ -1,6 +1,8 @@
 package cz.pavelchraska.eshop.entity;
 
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,7 +16,7 @@ public class OrderedItem {
 
     @ManyToOne
     @JoinColumn(name="ORDER_ID")
-    private Order order;
+    private UserOrder userOrder;
 
     @ManyToOne
     @JoinColumn(name = "ITEM_ID")
@@ -36,12 +38,12 @@ public class OrderedItem {
         this.quantity = quantity;
     }
 
-    public Order getOrder() {
-        return order;
+    public UserOrder getUserOrder() {
+        return userOrder;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setUserOrder(UserOrder userOrder) {
+        this.userOrder = userOrder;
     }
 
     public Item getItem() {

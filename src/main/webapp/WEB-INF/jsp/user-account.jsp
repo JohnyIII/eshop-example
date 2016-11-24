@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Pajut
@@ -13,4 +14,52 @@
 <b>${user.username}</b><br>
 
 <i>${user.email}</i>
+<br/>
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+    <tr>
+        <th>
+            Order ID
+        </th>
+        <th>
+            State
+        </th>
+        <th>
+            Zip
+        </th>
+        <th>
+            Street
+        </th>
+        <th>
+            Items
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:if test="${not empty orders}">
+        <c:forEach items="${orders}" var="userOrder">
+            <tr>
+                <td>
+                        ${userOrder.id}
+                </td>
+                <td>
+                        ${userOrder.state}
+                </td>
+                <td>
+                        ${userOrder.zipCode}
+                </td>
+                <td>
+                        ${userOrder.street}
+                </td>
+                <td>
+                    <c:forEach items="${userOrder.orderedItems}" var="item">
+                        ${item.quantity} ${item.item.name}
+                    </c:forEach>
+                </td>
+            </tr>
+        </c:forEach>
+    </c:if>
+
+    </tbody>
+</table>
 

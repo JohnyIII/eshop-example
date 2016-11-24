@@ -51,11 +51,12 @@
     </tr>
 </table>
 
-<form:form commandName="order" cssClass="form-horizontal registrationForm" >
+<form:form commandName="userOrder" cssClass="form-horizontal registrationForm" >
     <div class="form-group">
         <label for="city" class="col-sm-2 control-label"> Mesto:</label>
         <div class="col-sm-10">
             <form:input path="city" cssClass="form-control"/>
+            <form:errors path="city"/>
         </div>
     </div>
 
@@ -63,12 +64,14 @@
         <label for="zipCode" class="col-sm-2 control-label"> Psc:</label>
         <div class="col-sm-10">
             <form:input path="zipCode" cssClass="form-control"/>
+            <form:errors path="zipCode"/>
         </div>
     </div>
     <div class="form-group">
         <label for="street" class="col-sm-2 control-label"> Ulice:</label>
         <div class="col-sm-10">
             <form:input path="street" cssClass="form-control"/>
+            <form:errors path="street"/>
         </div>
     </div>
 
@@ -76,6 +79,7 @@
         <label for="state" class="col-sm-2 control-label"> Stat:</label>
         <div class="col-sm-10">
             <form:input path="state" cssClass="form-control"/>
+            <form:errors path="state"/>
         </div>
     </div>
 
@@ -85,5 +89,4 @@
         </div>
     </div>
 
-    ${aa}
 </form:form>
