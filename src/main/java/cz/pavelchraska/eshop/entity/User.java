@@ -15,6 +15,9 @@ public class User {
     @GeneratedValue
     private int id;
 
+    @OneToMany
+    private List<Order> orders;
+
     @Email
     private String email;
 
@@ -37,6 +40,14 @@ public class User {
 
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     public void setEnabled(boolean enabled) {

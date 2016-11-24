@@ -1,1 +1,0 @@
-<strong>index pico</strong>

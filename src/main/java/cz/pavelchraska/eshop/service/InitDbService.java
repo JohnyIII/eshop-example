@@ -70,8 +70,27 @@ public class InitDbService {
                 "a stand-alone prologue released the previous year, as well as his final work prior to his departure from Konami.");
         item2.setImage_url("resources/Mgs5.png");
         item2.setPrice(200);
-        item2.setQuantity(0);
+        item2.setQuantity(3);
         itemDao.save(item2);
+        Item item3 = new Item();
+        item3.setName("Metal Gear Solid 4: Guns of the Patriots");
+        item3.setDescription("Metal Gear Solid 4: Guns of the Patriots[a] is an action-adventure stealth video game developed by" +
+                " Kojima Productions and published by Konami exclusively for the PlayStation 3 console. It is the sixth Metal Gear game " +
+                "directed by Hideo Kojima and was released worldwide on June 12, 2008.");
+        item3.setImage_url("resources/Mgs4.jpg");
+        item3.setPrice(180);
+        item3.setQuantity(7);
+        itemDao.save(item3);
+        Item item4 = new Item();
+        item4.setName("The Witcher 3: Wild Hunt");
+        item4.setDescription("The Witcher 3: Wild Hunt[a] is an open world action role-playing video game developed by CD Projekt RED." +
+                " Announced in February 2013, it was released worldwide for Microsoft Windows, PlayStation 4, and Xbox One on 19 May 2015. " +
+                "The game is the third in the series, preceded by The Witcher and The Witcher 2: Assassins of Kings, which are based on the " +
+                "series of fantasy novels by Polish author Andrzej Sapkowski.");
+        item4.setImage_url("resources/Witcher3.jpg");
+        item4.setPrice(280);
+        item4.setQuantity(7);
+        itemDao.save(item4);
 
     }
 }

@@ -13,12 +13,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Repository
+@Transactional
 public class RoleDaoImpl implements RoleDao {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Transactional
     public void save(Role roleUser) {
         entityManager.persist(roleUser);
     }

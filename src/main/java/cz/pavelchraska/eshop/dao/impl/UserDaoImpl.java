@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@Transactional
 public class UserDaoImpl implements UserDao {
 
     @Autowired
@@ -25,7 +26,6 @@ public class UserDaoImpl implements UserDao {
     private EntityManager entityManager;
 
 
-    @Transactional
     public User getById(Integer id) {
         Session session = entityManager.unwrap(Session.class);
 
@@ -34,7 +34,6 @@ public class UserDaoImpl implements UserDao {
                 .uniqueResult();
     }
 
-    @Transactional
     public void save(User user) {
         List<Role> roles= new ArrayList<Role>();
         Role role=roleDao.getById(1);
@@ -42,12 +41,11 @@ public class UserDaoImpl implements UserDao {
         user.setRoles(roles);
         entityManager.persist(user);
     }
-    @Transactional
+
     public void saveAdmin(User user){
         entityManager.persist(user);
     }
 
-    @Transactional
     public User findByName(String name) {
         Session session = entityManager.unwrap(Session.class);
 
