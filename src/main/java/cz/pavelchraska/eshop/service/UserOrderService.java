@@ -21,4 +21,11 @@ public class UserOrderService {
     public List<UserOrder> findByUsername(String name) {
         return userOrderDao.findByUsername(name);
     }
+    public UserOrder findbyId(int id){
+    	return userOrderDao.findById(id);
+    }
+
+	public UserOrder findByIdWithItems(int id) {
+		return userOrderDao.findByIdWithItems(id);
+	}
 }

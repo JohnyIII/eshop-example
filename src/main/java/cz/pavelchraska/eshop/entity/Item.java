@@ -1,6 +1,8 @@
 package cz.pavelchraska.eshop.entity;
 
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,10 @@ public class Item {
     @Column(length = 1000)
     private String description;
 
+    @OneToMany(cascade = {CascadeType.ALL})
+    private List<OrderedItem> items;
+    
+    
     private Integer price;
 
     private String name;

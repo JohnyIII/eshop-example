@@ -55,8 +55,12 @@ public class BasketController {
             return "basket";
         }
         userOrder.setUser(userService.findByname(principal.getName()));
-
-        userOrder.setOrderedItems(new ArrayList<OrderedItem>(basket.getItems()));
+        ArrayList<OrderedItem> list=new ArrayList<OrderedItem>(basket.getItems());
+        for (OrderedItem orderedItem : list) {
+			orderedItem.setUserOrder(userOrder);
+		}
+        userOrder.setOrderedItems(list);
+        
         userOrderService.save(userOrder);
         basket.clear();
         return "redirect:/account.html";

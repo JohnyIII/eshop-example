@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Pajut
@@ -31,7 +32,7 @@
             Street
         </th>
         <th>
-            Items
+            Link
         </th>
     </tr>
     </thead>
@@ -52,9 +53,7 @@
                         ${userOrder.street}
                 </td>
                 <td>
-                    <c:forEach items="${userOrder.orderedItems}" var="item">
-                        ${item.quantity} ${item.item.name}
-                    </c:forEach>
+                <a href='<spring:url value="/order/${userOrder.id}.html" />'>Order detail</a>
                 </td>
             </tr>
         </c:forEach>
