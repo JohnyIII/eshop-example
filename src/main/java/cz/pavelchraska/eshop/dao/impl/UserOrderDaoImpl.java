@@ -53,7 +53,7 @@ private OrderedItemsDao orderedItemDao;
 		 Session session = entityManager.unwrap(Session.class);
 		 UserOrder order= (UserOrder) session.createCriteria(UserOrder.class).add(Restrictions.eq("id", id)).uniqueResult();
 		 order.setOrderedItems(orderedItemDao.findByOrder(id));
-		return null;
+		return order;
 	}
 	
 }
