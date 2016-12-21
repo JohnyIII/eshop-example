@@ -38,4 +38,8 @@
         <put-attribute name="title" value="Order detail"/>
         <put-attribute name="body" value="/WEB-INF/jsp/order.jsp"/>
     </definition>
+    <definition name="users" extends="common">
+        <put-attribute name="title" value="All users"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/users.jsp"/>
+    </definition>
 </tiles-definitions>

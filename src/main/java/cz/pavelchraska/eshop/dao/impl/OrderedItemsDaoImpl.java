@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
+import org.hibernate.criterion.CriteriaSpecification;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,7 +19,6 @@ import cz.pavelchraska.eshop.entity.OrderedItem;
 import cz.pavelchraska.eshop.entity.UserOrder;
 
 @Repository
-@Transactional
 public class OrderedItemsDaoImpl implements OrderedItemsDao{
 	
 	@Autowired
@@ -25,11 +26,13 @@ public class OrderedItemsDaoImpl implements OrderedItemsDao{
 
 	 @PersistenceContext
 	    private EntityManager entityManager;
-	
+
+	@Transactional
 	public List<OrderedItem> findByOrder(int id) {
 		 Session session = entityManager.unwrap(Session.class);
 		 UserOrder order=userOrderDao.findById(id);
-		return session.createCriteria(OrderedItem.class).add(Restrictions.eq("userOrder",order)).list();
+		List<OrderedItem> items=session.createCriteria(OrderedItem.class).add(Restrictions.eq("userOrder",order)).setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY).list();
+		return items;
 	}
 
 }

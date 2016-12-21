@@ -16,6 +16,9 @@
         <intercept-url pattern="/users**" access="hasRole('ADMIN')"/>
         <intercept-url pattern="/users/**" access="hasRole('ADMIN')"/>
         <intercept-url pattern="/account**" access="hasRole('USER')"/>
+        <intercept-url pattern="/order**" access="hasRole('USER')"/>
+        <intercept-url pattern="/order/**" access="hasRole('USER')"/>
+        <intercept-url pattern="/basket**" access="hasRole('USER')"/>
         <form-login login-page="/login.html" login-processing-url="/j_spring_security_check"
                     username-parameter="j_username" password-parameter="j_password"/>
         <logout logout-url="/logout" logout-success-url="/index.html"/>

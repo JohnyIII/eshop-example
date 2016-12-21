@@ -44,6 +44,9 @@
                     <security:authorize access="!isAuthenticated()">
                         <li><a href='<spring:url value="/login.html" />'>Login</a></li>
                     </security:authorize>
+                    <security:authorize access="hasRole('ADMIN')">
+                        <li><a href='<spring:url value="/users.html" />'>Users</a></li>
+                    </security:authorize>
                     <security:authorize access="isAuthenticated()">
                         <li><a href='<spring:url value="/basket.html" />'>Basket</a></li>
                         <li><a href='<spring:url value="/account.html" />'>My account</a></li>

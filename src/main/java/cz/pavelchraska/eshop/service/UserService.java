@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class UserService {
 
     @Autowired
@@ -18,7 +17,7 @@ public class UserService {
         userDao.save(user);
     }
 
-    public User findByname(String name) {
+    public User findByName(String name) {
         return userDao.findByName(name);
     }
 

@@ -54,7 +54,7 @@ public class BasketController {
         if(result.hasErrors()){
             return "basket";
         }
-        userOrder.setUser(userService.findByname(principal.getName()));
+        userOrder.setUser(userService.findByName(principal.getName()));
         ArrayList<OrderedItem> list=new ArrayList<OrderedItem>(basket.getItems());
         for (OrderedItem orderedItem : list) {
 			orderedItem.setUserOrder(userOrder);
@@ -62,9 +62,11 @@ public class BasketController {
         userOrder.setOrderedItems(list);
         
         userOrderService.save(userOrder);
+   
         basket.clear();
         return "redirect:/account.html";
     }
+    
 
     @RequestMapping(value = "/add")
     public String addItem(@RequestParam int id, @RequestParam int quantity, @ModelAttribute Basket basket) {

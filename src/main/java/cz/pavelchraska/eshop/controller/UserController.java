@@ -1,8 +1,6 @@
 package cz.pavelchraska.eshop.controller;
 
 
-import cz.pavelchraska.eshop.dao.UserDao;
-import cz.pavelchraska.eshop.dao.UserOrderDao;
 import cz.pavelchraska.eshop.service.UserOrderService;
 import cz.pavelchraska.eshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +22,7 @@ public class UserController {
     @RequestMapping("/account")
     public String showAccount(Principal principal, Model model) {
         String name = principal.getName();
-        model.addAttribute("user", userService.findByname(name));
+        model.addAttribute("user", userService.findByName(name));
         model.addAttribute("orders", userOrderService.findByUsername(name));
         return "user-account";
     }

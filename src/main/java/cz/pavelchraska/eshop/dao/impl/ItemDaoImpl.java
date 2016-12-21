@@ -13,17 +13,17 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-@Transactional
 public class ItemDaoImpl implements ItemDao {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-
+    @Transactional
     public void save(Item item) {
         entityManager.persist(item);
     }
 
+    @Transactional
     public List<Item> findAll() {
         Session session = entityManager.unwrap(Session.class);
         List<Item> list = session.createCriteria(Item.class)
@@ -31,6 +31,7 @@ public class ItemDaoImpl implements ItemDao {
         return list;
     }
 
+    @Transactional
     public Item getById(int id) {
         Session session = entityManager.unwrap(Session.class);
         return (Item) session.createCriteria(Item.class).add(Restrictions.eq("id", id)).uniqueResult();
