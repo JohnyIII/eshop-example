@@ -1,7 +1,6 @@
 package cz.pavelchraska.eshop.entity;
 
 
-import cz.pavelchraska.eshop.annotation.UniqueUsername;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
@@ -12,7 +11,7 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @OneToMany
@@ -29,9 +28,9 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable
-    private List<Role> roles;
+    private List<Role> role;
 
-    @UniqueUsername(message = "Such username already exists!")
+    // nefunguje chujovina misto user_id bere porad users_id @UniqueUsername(message = "Such username already exists!")
     @Size(min=3, message = "Username must be at least 3 characters !")
     private String username;
 
@@ -86,12 +85,12 @@ public class User {
         this.password = password;
     }
 
-    public List<Role> getRoles() {
-        return roles;
+    public List<Role> getRole() {
+        return role;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setRole(List<Role> roles) {
+        this.role = roles;
     }
 
     public String getUsername() {

@@ -4,7 +4,6 @@ import cz.pavelchraska.eshop.dao.ItemDao;
 import cz.pavelchraska.eshop.dao.RoleDao;
 import cz.pavelchraska.eshop.dao.UserDao;
 import cz.pavelchraska.eshop.entity.Item;
-import cz.pavelchraska.eshop.entity.UserOrder;
 import cz.pavelchraska.eshop.entity.Role;
 import cz.pavelchraska.eshop.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +27,7 @@ public class InitDbService {
     @Autowired
     private UserDao userDao;
 
-    @PostConstruct
+
     public void init() {
         Role roleUser = new Role();
         roleUser.setName("ROLE_USER");
@@ -44,7 +42,7 @@ public class InitDbService {
         List<Role> roles = new ArrayList<Role>();
         roles.add(roleAdmin);
         roles.add(roleUser);
-        userAdmin.setRoles(roles);
+        userAdmin.setRole(roles);
         userAdmin.setPassword(new BCryptPasswordEncoder().encode("admin"));
         userAdmin.setEnabled(true);
         userAdmin.setEmail("admin@admin.cz");

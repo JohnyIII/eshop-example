@@ -35,6 +35,7 @@ public class RegisterController {
 
     @PostMapping
     public String doRegister(@Valid @ModelAttribute("user") User user, BindingResult result) {
+        System.out.println("aa");
         if(result.hasErrors()){
             return "register";
         }

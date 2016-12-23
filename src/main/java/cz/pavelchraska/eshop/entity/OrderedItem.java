@@ -15,11 +15,11 @@ public class OrderedItem {
     private int quantity;
 
     @ManyToOne
-    @JoinColumn(name="ORDER_ID")
+    @JoinColumn(name="UserOrder_id")
     private UserOrder userOrder;
 
     @ManyToOne
-    @JoinColumn(name = "ITEM_ID")
+    @JoinColumn(name = "Item_id")
     private Item item;
 
     public int getId() {

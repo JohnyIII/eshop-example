@@ -37,9 +37,9 @@ public class UserDaoImpl implements UserDao {
     @Transactional
     public void save(User user) {
         List<Role> roles= new ArrayList<Role>();
-        Role role=roleDao.getById(1);
+        Role role=roleDao.getById(2);
         roles.add(role);
-        user.setRoles(roles);
+        user.setRole(roles);
         entityManager.persist(user);
     }
 
@@ -51,7 +51,7 @@ public class UserDaoImpl implements UserDao {
     @Transactional
     public User findByName(String name) {
         Session session = entityManager.unwrap(Session.class);
-User user=(User) session.createCriteria(User.class)
+        User user=(User) session.createCriteria(User.class)
         .add(Restrictions.eq("username", name))
         .uniqueResult();
         return (User) session.createCriteria(User.class)
